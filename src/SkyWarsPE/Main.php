@@ -334,7 +334,7 @@ private $aplayers = 0;
 	
 	private function stopGame($level){
 		$this->skywarsstarted == false; //put the array to false
-		$this->aplayers == 0; //restore players
+		$this->aplayers = 0; //restore players
 		$originalMap = $this->getConfig()->get('aworld');
 		$zipPath = $this->getDataFolder("skywarsworlds/$originalMap/");
 		$this->extractWorld($zipPath, $level);
@@ -344,7 +344,7 @@ private $aplayers = 0;
 	private function extractWorld($zipPath, $worldName){
     		$zip = new \ZipArchive;
     		$errId = $zip->open($zipPath); // TODO: if errored, check $errId
-		$zip->extractTo($this->getServer()->getDataPath() . "worlds/$worldName/");
+            $zip->extractTo($this->getServer()->getDataPath() . "worlds/$worldName/");
     		$zip->close();
 	}
 	
